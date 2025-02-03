@@ -1,4 +1,6 @@
 Cloudvita-BackEnd/node_modules
 Cloudvita-Client/node_modules
 
+Cloudvita-Backend/dist
+
 *.env
