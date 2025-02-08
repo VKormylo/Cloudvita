@@ -4,8 +4,10 @@ import * as userController from '../controllers/userController'
 
 const router = express.Router()
 
+router.get('/isLoggedIn', authController.isLoggedIn)
 router.post('/signup', authController.signup)
 router.post('/login', authController.login)
+router.get('/logout', authController.logout)
 router.delete('/deleteMe', authController.protect, userController.deleteMe)
 
 router.route('/').get(userController.getAllUsers)

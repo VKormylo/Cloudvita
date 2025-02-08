@@ -80,6 +80,8 @@ export const protect = catchAsync(
       req.headers.authorization.startsWith('Bearer')
     ) {
       token = req.headers.authorization.split(' ')[1]
+    } else if (req.cookies.jwt) {
+      token = req.cookies.jwt
     }
 
     if (!token) {
@@ -116,3 +118,45 @@ export const protect = catchAsync(
     next()
   }
 )
+
+export const logout = (req: Request, res: Response) => {
+  res.cookie('jwt', 'loggedout', {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true
+  })
+  res.status(200).json({ status: 'success' })
+}
+
+export const isLoggedIn = catchAsync(async function (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  if (req.cookies.jwt) {
+    const decoded = jwt.verify(req.cookies.jwt, config.JWT_SECRET) as JwtPayload
+
+    const currentUser = await User.findById(decoded.id)
+    if (!currentUser) {
+      return next(
+        new ErrorResponse('You are not logged in! Please log in again.', 401)
+      )
+    }
+
+    if (currentUser.changedPasswordAfter(decoded.iat as number)) {
+      return next(
+        new ErrorResponse('You are not logged in! Please log in again.', 401)
+      )
+    }
+
+    res.status(200).json({
+      status: 'success',
+      data: {
+        user: currentUser
+      }
+    })
+  } else {
+    return next(
+      new ErrorResponse('You are not logged in! Please log in again.', 401)
+    )
+  }
+})
