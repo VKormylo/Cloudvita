@@ -1,9 +1,11 @@
 import express from 'express'
 import morgan from 'morgan'
+import cookieParser from 'cookie-parser'
 import rateLimit from 'express-rate-limit'
 import helmet from 'helmet'
 import mongoSanitize from 'express-mongo-sanitize'
 import hpp from 'hpp'
+import cors from 'cors'
 
 import locationRouter from './routes/locationRoutes'
 import userRouter from './routes/userRoutes'
@@ -15,6 +17,16 @@ const app = express()
 
 // Set security HTTP headers
 app.use(helmet())
+
+app.use(
+  cors({
+    origin: 'http://localhost:5173',
+    credentials: true
+  })
+)
+
+// Parse cookie header and populate req.cookies with an object
+app.use(cookieParser())
 
 // Log requests in development mode
 if (process.env.NODE_ENV === 'development') {
