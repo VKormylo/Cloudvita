@@ -20,9 +20,9 @@ export const getLocations = catchAsync(
 
     res.status(200).json({
       status: 'success',
-      results: locations.length,
       data: {
-        locations
+        locations,
+        count: locations.length
       }
     })
   }
