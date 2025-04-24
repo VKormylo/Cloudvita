@@ -17,15 +17,22 @@ const signToken = (id: string) => {
 const createSendToken = (
   user: Omit<UserDocument, 'password'> & { password: string | undefined },
   statusCode: number,
-  res: Response
+  res: Response,
+  rememberMe: boolean
 ) => {
   const token = signToken(user._id as string)
   const expiresIn = config.JWT_COOKIE_EXPIRES_IN || DEFAULT_EXPIRES_IN
-  const cookieOptions = {
-    expires: new Date(Date.now() + +expiresIn * 24 * 60 * 60 * 1000),
-    secure: false,
-    httpOnly: true
-  }
+
+  const cookieOptions = rememberMe
+    ? {
+        expires: new Date(Date.now() + +expiresIn * 24 * 60 * 60 * 1000),
+        secure: false,
+        httpOnly: true
+      }
+    : {
+        secure: false,
+        httpOnly: true
+      }
 
   if (config.NODE_ENV === 'production') cookieOptions.secure = true
 
@@ -35,40 +42,41 @@ const createSendToken = (
 
   res.status(statusCode).json({
     status: 'success',
-    token,
     data: {
-      user: user
+      user: user,
+      token
     }
   })
 }
 
 export const signup = catchAsync(async (req: Request, res: Response) => {
-  const { name, email, password, passwordConfirm } = req.body as UserInterface
+  const { name, password, passwordConfirm } = req.body as UserInterface
   const newUser: UserDocument = await User.create({
     name,
-    email,
     password,
     passwordConfirm
   })
 
-  createSendToken(newUser, 201, res)
+  createSendToken(newUser, 201, res, req.body.rememberMe)
 })
 
 export const login = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const { email, password } = req.body
+    const { name, password } = req.body
 
-    if (!email || !password) {
-      return next(new ErrorResponse('Please provide email and password!', 400))
+    if (!name || !password) {
+      return next(new ErrorResponse('Please provide name and password!', 400))
     }
 
-    const user: UserDocument = await User.findOne({ email }).select('+password')
+    const user: UserDocument = await User.findOne({ name }).select(
+      '+password -__v'
+    )
 
     if (!user || !(await user.correctPassword(password, user.password))) {
-      return next(new ErrorResponse('Invalid email or password!', 401))
+      return next(new ErrorResponse('Invalid name or password!', 401))
     }
 
-    createSendToken(user, 200, res)
+    createSendToken(user, 200, res, req.body.rememberMe)
   }
 )
 
