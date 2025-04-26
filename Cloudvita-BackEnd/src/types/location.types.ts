@@ -5,18 +5,15 @@ interface LocationCoordinates {
   lon: number
 }
 
-export interface LocationDocument extends Document {
-  userId: ObjectId
+export interface LocationDocument extends Document<ObjectId> {
   city: string
   country: string
   coordinates: LocationCoordinates
-  lastViewed: Date
 }
 
 export interface LocationInterface {
-  userId: ObjectId
+  _id: ObjectId
   city: string
   country: string
   coordinates: LocationCoordinates
-  lastViewed: Date
 }

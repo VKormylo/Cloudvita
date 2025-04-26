@@ -6,7 +6,8 @@ import bcrypt from 'bcryptjs'
 const userSchema = new Schema<UserDocument>({
   name: {
     type: String,
-    required: [true, 'Please provide your name']
+    required: [true, 'Please provide your name'],
+    unique: true
   },
   photo: String,
   password: {
@@ -28,7 +29,22 @@ const userSchema = new Schema<UserDocument>({
     type: Boolean,
     default: true,
     select: false
-  }
+  },
+  savedLocations: [
+    {
+      _id: false,
+      locationId: {
+        type: Schema.Types.ObjectId,
+        required: [true, 'A location must have an id'],
+        ref: ModelsEnum.LOCATION
+      },
+      lastViewed: {
+        type: Date,
+        required: [true, 'A location must have a last viewed date'],
+        default: Date.now
+      }
+    }
+  ]
 })
 
 userSchema.pre<UserDocument>('save', async function (next: Function) {

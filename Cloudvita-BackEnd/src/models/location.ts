@@ -3,12 +3,6 @@ import { LocationDocument } from '../types/location.types'
 import ModelsEnum from '../constants/models'
 
 const locationSchema = new Schema<LocationDocument>({
-  userId: {
-    type: Schema.Types.ObjectId,
-    ref: ModelsEnum.USER,
-    required: [true, 'A location must belong to a user'],
-    select: false
-  },
   city: {
     type: String,
     required: [true, 'A location must have a city'],
@@ -31,11 +25,6 @@ const locationSchema = new Schema<LocationDocument>({
       min: -180,
       max: 180
     }
-  },
-  lastViewed: {
-    type: Date,
-    required: [true, 'A location must have a last viewed date'],
-    default: Date.now
   }
 })
 

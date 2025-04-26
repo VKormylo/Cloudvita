@@ -54,7 +54,8 @@ export const signup = catchAsync(async (req: Request, res: Response) => {
   const newUser: UserDocument = await User.create({
     name,
     password,
-    passwordConfirm
+    passwordConfirm,
+    savedLocations: []
   })
 
   createSendToken(newUser, 201, res, req.body.rememberMe)

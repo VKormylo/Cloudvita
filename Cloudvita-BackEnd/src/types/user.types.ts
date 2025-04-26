@@ -7,6 +7,12 @@ export interface UserDocument extends Document {
   passwordConfirm: string | undefined
   passwordChangedAt: Date
   active: boolean
+  savedLocations: [
+    {
+      locationId: string
+      lastViewed: Date
+    }
+  ]
   correctPassword: (candidatePassword: string, userPassword: string) => boolean
   changedPasswordAfter: (JWTTimestamp: number) => boolean
 }
