@@ -1,0 +1,178 @@
+@use "../../scss/_variables" as *;
+
+.forecast {
+    grid-area: forecast;
+    padding: 26px 48px 60px 48px;
+    background: linear-gradient(168deg, $blue-gray-500 0%, $blue-900 100%);
+
+    .forecast-header {
+        margin-top: 48px;
+        color: #fff;
+
+        &__info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        &__city {
+            font-size: $font-size-4xl;
+            font-weight: $font-weight-medium;
+        }
+
+        &__country {
+            font-size: $font-size-2xl;
+            font-weight: $font-weight-very-light;
+            color: $gray-400;
+            margin-top: 14px;
+        }
+
+        &__time {
+            font-size: $font-size-4xl;
+            font-weight: $font-weight-medium;
+        }
+
+        &__icon {
+            margin-top: 64px;
+            margin-bottom: 24px;
+        }
+
+        &__weather {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 40px;
+            border-bottom: $border-width-md solid $white-15;
+        }
+
+        &__temperature {
+            font-size: 60px;
+            font-weight: $font-weight-medium;
+        }
+
+        &__description {
+            max-width: 200px;
+            text-align: right;
+            font-size: $font-size-4xl;
+            font-weight: $font-weight-very-light;
+        }
+
+        &__additional {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .additional-item {
+            display: flex;
+            align-items: center;
+            column-gap: 18px;
+
+            &__icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 60px;
+                height: 60px;
+                border-radius: $border-radius-2xs;
+                background-color: $white-10;
+                & svg {
+                    width: 35px;
+                    height: 35px;
+                }
+            }
+
+            &:first-child svg path {
+                fill: white;
+            }
+
+            &:last-child svg path {
+                stroke: white;
+            }
+        }
+    }
+
+    .forecast-main {
+        margin-top: 44px;
+        color: #fff;
+
+        &__title {
+            font-size: $font-size-3xl;
+            font-weight: $font-weight-medium;
+        }
+
+        &__items {
+            display: flex;
+            flex-direction: column;
+            row-gap: 18px;
+            margin-top: 24px;
+        }
+
+        .forecast-item {
+            display: flex;
+            align-items: center;
+            max-width: 404px;
+            height: 90px;
+            padding: 0 32px;
+            border-radius: $border-radius-md;
+            background-color: $white-10;
+            border: $border-width-md solid transparent;
+            transition: all 0.3s;
+            cursor: pointer;
+
+            &__current,
+            &:hover {
+                border-color: $white-15;
+            }
+
+            &__icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                svg {
+                    width: 45px;
+                    height: 45px;
+                    filter: brightness(0) invert(1);
+                }
+            }
+
+            &__info {
+                margin-left: 24px;
+            }
+
+            &__date {
+                font-size: $font-size-md;
+                font-weight: $font-weight-light;
+                color: $gray-400;
+                margin-bottom: 7px;
+            }
+
+            &__description {
+                font-size: $font-size-xl;
+            }
+
+            &__temperatures {
+                position: relative;
+                padding-left: 32px;
+                margin-left: auto;
+                display: flex;
+                flex-direction: column;
+                row-gap: 10px;
+                text-align: right;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    background-color: $white-15;
+                    width: $border-width-xs;
+                }
+            }
+
+            &__temperature {
+                font-size: $font-size-lg;
+            }
+        }
+    }
+}
