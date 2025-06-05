@@ -1,0 +1,48 @@
+@mixin fonts($font-size, $font-weight, $line-height, $font-family) {
+    font-size: $font-size;
+    font-weight: $font-weight;
+    line-height: $line-height / $font-size;
+    font-family: $font-family;
+}
+
+//Адаптивний шрифт
+@mixin adaptiv-font($pcSize, $mobSize, $maxSize) {
+    $addSize: $pcSize - $mobSize;
+    @if $maxSize==1 {
+        //Тільки якщо менше контейнера
+        font-size: $pcSize + px;
+        @media (max-width: #{$maxWidthContainer + px}) {
+            font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+        }
+    } @else if $maxSize==2 {
+        //Тільки якщо більше контейнера
+        font-size: $pcSize + px;
+        @media (min-width: #{$maxWidthContainer + px}) {
+            font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+        }
+    } @else {
+        //Завжди
+        font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+    }
+}
+
+//Адаптивна властивість
+@mixin adaptiv-value($indentType, $pcSize, $mobSize, $maxSize) {
+    $addSize: $pcSize - $mobSize;
+    @if $maxSize==1 {
+        //Тільки якщо менше контейнера
+        #{$indentType}: $pcSize + px;
+        @media (max-width: #{$maxWidthContainer + px}) {
+            #{$indentType}: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+        }
+    } @else if $maxSize==2 {
+        //Тільки якщо більше контейнера
+        #{$indentType}: $pcSize + px;
+        @media (min-width: #{$maxWidthContainer + px}) {
+            #{$indentType}: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+        }
+    } @else {
+        //Завжди
+        #{$indentType}: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+    }
+}

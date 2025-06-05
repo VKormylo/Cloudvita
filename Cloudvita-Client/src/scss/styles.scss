@@ -1,0 +1,41 @@
+@forward "mixins";
+@forward "_reset";
+@use "_variables" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap");
+
+body {
+    font-family: $font-family-spartan, $font-family-roboto-flex, sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    background-color: #fff;
+    color: $blue-900;
+}
+
+#root {
+    max-width: $maxWidth + px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.wrapper {
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.main-page {
+    display: grid;
+    grid-template-columns: 350px 1fr 500px;
+    grid-template-rows: 120px auto;
+    grid-template-areas:
+        "sidebar header forecast"
+        "sidebar main forecast";
+    height: 100vh;
+
+    &__content {
+        position: relative;
+        grid-area: main;
+        padding: 32px;
+    }
+}
