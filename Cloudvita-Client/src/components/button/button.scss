@@ -1,0 +1,143 @@
+@use "../../scss/variables" as *;
+
+.button {
+    display: inline-block;
+    border: none;
+    transition: all 0.3s;
+
+    &-with-icon {
+        display: flex;
+        align-items: center;
+        column-gap: 12px;
+        font-size: $font-size-2xl !important;
+
+        svg path {
+            transition: all 0.3s;
+        }
+
+        &:hover {
+            color: $red-400 !important;
+
+            svg path {
+                fill: $red-400;
+            }
+        }
+
+        padding: 0 !important;
+        border: none !important;
+    }
+
+    &-small {
+        padding: 5px 10px;
+        font-size: 16px;
+    }
+
+    &-medium {
+        font-size: $font-size-md;
+        font-weight: $font-weight-semibold;
+        padding: 17px 34px;
+        border-radius: $border-radius-sm;
+        border-width: $border-width-md;
+    }
+
+    &-large {
+        padding: 17px 54px;
+        font-size: $font-size-lg;
+        font-weight: $font-weight-medium;
+        border-radius: $border-radius-xs;
+    }
+
+    &-stretch {
+        width: 100%;
+    }
+
+    &-primary {
+        color: #fff;
+        background-color: $blue-500;
+        &:hover {
+            background-color: $blue-900;
+        }
+    }
+
+    &-secondary {
+        color: $blue-gray-500;
+        border-style: solid;
+        border-color: $blue-gray-500;
+        &:hover {
+            color: $blue-500;
+            border-color: $blue-500;
+        }
+    }
+
+    &-tertiary {
+        background-color: $blue-900;
+        color: #fff;
+        &:hover {
+            background-color: $gray-100;
+            color: $blue-900;
+        }
+    }
+
+    & .icon {
+    }
+
+    &-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 72px;
+        height: 72px;
+        border-radius: $border-radius-sm;
+        background-color: $gray-300;
+        margin-left: auto;
+        border: none !important;
+
+        svg {
+            width: 38px;
+            height: 38px;
+        }
+
+        svg path {
+            transition: all 0.2s ease-out;
+        }
+
+        &:hover svg path {
+            fill: $blue-500;
+        }
+
+        &.button-primary {
+            svg path {
+                fill: $blue-500;
+            }
+            &:hover {
+                background-color: $blue-500 !important;
+                svg path {
+                    fill: #fff;
+                }
+            }
+        }
+
+        &.button-danger {
+            svg path {
+                fill: $red-400;
+            }
+            &:hover {
+                background-color: $red-400 !important;
+                svg path {
+                    fill: #fff;
+                }
+            }
+        }
+    }
+
+    &-disabled {
+        pointer-events: none;
+
+        &.button-secondary {
+            background-color: $blue-500;
+            svg path {
+                fill: #fff;
+            }
+        }
+    }
+}
