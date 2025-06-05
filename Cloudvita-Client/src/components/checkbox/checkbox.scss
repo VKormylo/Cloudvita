@@ -1,0 +1,48 @@
+@use "../../scss/_variables" as *;
+
+.checkbox {
+    display: flex;
+    justify-self: start;
+    align-items: center;
+    cursor: pointer;
+
+    input {
+        display: none;
+    }
+
+    input:checked + .checkbox__box {
+        background-color: $blue-500;
+        border-color: $blue-500;
+        &::after {
+            opacity: 1;
+        }
+    }
+
+    .checkbox__box {
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: $border-width-md solid $blue-500;
+        border-radius: $border-radius-2xs;
+        margin-right: 8px;
+        transition: all 0.3s ease;
+
+        &::after {
+            content: "";
+            position: absolute;
+            background: url("../../assets/img/checked.svg") no-repeat;
+            top: 50%;
+            left: 50%;
+            width: 15px;
+            height: 12px;
+            transform: translate(-46%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+    }
+
+    .checkbox__text {
+        margin-left: 4px;
+    }
+}
