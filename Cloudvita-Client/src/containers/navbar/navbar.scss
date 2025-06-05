@@ -1,0 +1,60 @@
+@use "../../scss/_variables" as *;
+
+.sidebar {
+    grid-area: sidebar;
+    grid-row: span 2;
+    padding: 48px;
+    background-color: $gray-100;
+
+    .navbar {
+        margin-top: 90px;
+
+        &__list {
+            display: flex;
+            flex-direction: column;
+            row-gap: 32px;
+        }
+
+        &__button {
+            &:last-child {
+                position: fixed;
+                bottom: 60px;
+                .navbar__link {
+                    color: $blue-900;
+                }
+            }
+        }
+
+        &__li {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            svg path {
+                transition: all 0.3s;
+            }
+
+            &--active,
+            &:hover {
+                .navbar__link {
+                    color: $blue-500 !important;
+                }
+
+                & svg path {
+                    fill: $blue-500;
+                }
+            }
+        }
+
+        &__link {
+            margin-left: 12px;
+            font-size: $font-size-xl;
+            color: $gray-500;
+            transition: all 0.3s;
+        }
+
+        &__button {
+            margin-top: auto;
+        }
+    }
+}
