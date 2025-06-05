@@ -1,0 +1,47 @@
+@use "../../scss/variables" as *;
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    row-gap: 48px;
+
+    .settings-item {
+        display: flex;
+        flex-direction: column;
+        row-gap: 24px;
+
+        &__title {
+            font-size: $font-size-3xl;
+            font-weight: $font-weight-medium;
+        }
+
+        &-list {
+            display: flex;
+            flex-direction: column;
+            row-gap: 32px;
+
+            &__item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                column-gap: 48px;
+
+                .item-info {
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 14px;
+
+                    &__title {
+                        font-size: $font-size-xl;
+                        font-weight: $font-weight-medium;
+                    }
+
+                    &__text {
+                        font-size: $font-size-lg;
+                        color: $blue-gray-400;
+                    }
+                }
+            }
+        }
+    }
+}
