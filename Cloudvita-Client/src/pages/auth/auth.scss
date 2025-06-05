@@ -1,0 +1,103 @@
+@use "../../scss/_variables.scss" as *;
+
+.authentication {
+    position: relative;
+    transform: translateY(calc(50vh - 416px));
+    display: flex;
+    height: 832px;
+    width: 1100px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: $border-radius-md;
+    overflow: hidden;
+    &.visible {
+        display: flex;
+    }
+
+    &.login {
+        .auth-main {
+            transform: translateX(100%);
+        }
+        .auth-swap {
+            background: url("../../assets/img/auth-gradient-login.jpg") no-repeat;
+            background-size: cover;
+            transform: translateX(-100%);
+            &__title {
+                transform: translateX(200%);
+                margin-left: -26px;
+            }
+            &__button {
+                left: auto;
+                right: 42px;
+            }
+        }
+    }
+    .auth-main {
+        position: absolute;
+        left: 0;
+        width: 550px;
+        height: 100%;
+        padding: 64px;
+        transition: all 0.4s ease-out;
+        &__title {
+            font-size: $font-size-4xl;
+            font-weight: $font-weight-medium;
+            margin-top: 36px;
+            margin-bottom: 18px;
+        }
+        &__subtitle {
+            color: $gray-500;
+            font-size: $font-size-xl;
+        }
+    }
+    .auth-form {
+        display: flex;
+        flex-direction: column;
+        margin-top: 28px;
+        &__inputs {
+            display: flex;
+            flex-direction: column;
+            row-gap: 24px;
+        }
+        &__label {
+            margin-bottom: 12px;
+            font-size: $font-size-lg;
+            font-weight: $font-weight-medium;
+        }
+        &__item:has(input[type="checkbox"]) {
+            margin: 22px 0;
+        }
+        &__remember {
+            font-size: $font-size-lg;
+        }
+    }
+    .auth-swap {
+        position: absolute;
+        right: 0;
+        width: 550px;
+        height: 100%;
+        background: url("../../assets/img/auth-gradient.jpg") no-repeat;
+        transition: all 0.4s ease-out;
+        &__title {
+            font-family: $font-family-spartan, $font-family-roboto-flex;
+            font-size: 60px;
+            font-weight: $font-weight-bold;
+            color: #fff;
+            letter-spacing: 2px;
+            transition: all 0.4s ease-out;
+            // transform: rotate(90deg) translate(45%, 90%);
+            writing-mode: vertical-rl;
+            margin-inline-start: 64px;
+            margin-left: 26px;
+            height: 600px;
+            span {
+                color: $blue-500;
+            }
+        }
+        &__button {
+            position: absolute;
+            bottom: 64px;
+            left: 42px;
+        }
+    }
+}
