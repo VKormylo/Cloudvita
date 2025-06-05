@@ -1,0 +1,33 @@
+@use "../../scss/variables" as *;
+
+.tabs {
+    display: flex;
+    column-gap: 4px;
+    justify-self: flex-start;
+    position: relative;
+    margin-top: 32px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    border: 1px solid $gray-200;
+    overflow: hidden;
+    padding: 4px;
+
+    .tab {
+        padding: 14px 32px;
+        min-width: 140px;
+        text-align: center;
+        font-size: $font-size-lg;
+        font-weight: $font-weight-medium;
+        transition: all 0.3s;
+        border-radius: 6px;
+
+        &:hover {
+            background-color: $gray-100;
+        }
+
+        &-active {
+            color: $blue-500;
+            background-color: $gray-100;
+        }
+    }
+}
