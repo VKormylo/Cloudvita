@@ -1,0 +1,50 @@
+@use "../../scss/_variables" as *;
+
+.empty-weather {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+
+    .weather-icon {
+        position: relative;
+        &__search {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            animation: moveAcrossCloud 4s ease-in-out infinite;
+        }
+    }
+
+    .weather-content {
+        margin-top: 16px;
+        font-size: $font-size-2xl;
+        text-align: center;
+        color: $blue-gray-500;
+        &__subtitle {
+            font-weight: $font-weight-medium;
+            margin-top: 12px;
+        }
+    }
+}
+
+@keyframes moveAcrossCloud {
+    0% {
+        left: -20px;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    50% {
+        left: 50%;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
