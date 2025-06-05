@@ -1,0 +1,63 @@
+@use "../../scss/variables" as *;
+
+.skeleton-loader {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+
+    &-light {
+        @extend %skeleton-loader-light;
+
+        &::after {
+            @extend %loading-block-light;
+        }
+    }
+
+    &-dark {
+        @extend %skeleton-loader-dark;
+
+        &::after {
+            @extend %loading-block-dark;
+        }
+    }
+}
+
+%skeleton-loader-light {
+    background-color: $gray-300;
+}
+
+%skeleton-loader-dark {
+    background-color: $blue-gray-400;
+    opacity: 0.1;
+}
+
+%loading-block {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: loading-animation 2s linear infinite;
+}
+
+%loading-block-light {
+    @extend %loading-block;
+    background: linear-gradient(90deg, $gray-300 0%, $gray-400 50%, $gray-300 100%);
+    opacity: 0.3;
+}
+
+%loading-block-dark {
+    @extend %loading-block;
+    background: linear-gradient(90deg, $blue-gray-400 0%, $gray-100 50%, $blue-gray-400 100%);
+    opacity: 0.6;
+}
+
+@keyframes loading-animation {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
