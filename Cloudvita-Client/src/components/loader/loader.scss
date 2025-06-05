@@ -1,0 +1,40 @@
+@use "../../scss/_variables" as *;
+
+.loader {
+    position: relative;
+    display: inline-block;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: $border-width-md * 1.5 solid transparent;
+        border-top-color: $blue-500;
+        animation: spin 1.5s cubic-bezier(0.4, 0.5, 0.6, 0.8) infinite;
+    }
+
+    &__container {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    50% {
+        transform: translate(-50%, -50%) rotate(180deg);
+        animation-timing-function: cubic-bezier(0.5, 0.2, 0.6, 1);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+        animation-timing-function: cubic-bezier(0.7, 0, 1, 0.5);
+    }
+}
