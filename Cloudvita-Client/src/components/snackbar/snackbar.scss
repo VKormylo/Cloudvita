@@ -1,0 +1,141 @@
+@use "../../scss/variables" as *;
+
+$prefix: "snackbar-alert";
+
+.snackbar-alert {
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%, -50%);
+    z-index: 50;
+
+    opacity: 0;
+    min-width: 340px;
+    pointer-events: none;
+    transition: all 0.3s;
+    border-radius: 8px;
+    color: #fff;
+    padding: 14px 24px;
+
+    &-opened {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    &-filled {
+        &.#{$prefix}-success {
+            background-color: $green-600;
+        }
+
+        &.#{$prefix}-warning {
+            background-color: $yellow-600;
+        }
+
+        &.#{$prefix}-error {
+            background-color: $red-600;
+        }
+    }
+
+    &-outlined {
+        &.#{$prefix}-success {
+            background-color: $green-300;
+
+            .#{$prefix}__message {
+                color: $green-600;
+            }
+
+            .#{$prefix}__close {
+                svg path {
+                    fill: $green-600;
+                }
+            }
+
+            .#{$prefix}__icon {
+                svg {
+                    path,
+                    circle {
+                        stroke: $green-600;
+                    }
+                }
+            }
+        }
+
+        &.#{$prefix}-warning {
+            background-color: $yellow-300;
+
+            .#{$prefix}__message {
+                color: $yellow-600;
+            }
+
+            .#{$prefix}__close {
+                svg path {
+                    fill: $yellow-600;
+                }
+            }
+
+            .#{$prefix}__icon {
+                svg {
+                    path,
+                    circle {
+                        fill: $yellow-600;
+                    }
+                }
+            }
+        }
+
+        &.#{$prefix}-error {
+            background-color: $red-300;
+
+            .#{$prefix}__message {
+                color: $red-600;
+            }
+
+            .#{$prefix}__close {
+                svg path {
+                    fill: $red-600;
+                }
+            }
+
+            .#{$prefix}__icon {
+                svg {
+                    path {
+                        fill: $red-600;
+                    }
+                }
+            }
+        }
+    }
+
+    &__close {
+        svg {
+            width: 32px;
+            height: 32px;
+
+            path {
+                fill: #fff;
+            }
+        }
+    }
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        svg {
+            width: 28px;
+            height: 28px;
+        }
+    }
+
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        column-gap: 16px;
+    }
+
+    &__message {
+        width: 100%;
+        font-size: $font-size-lg;
+        line-height: 1.25;
+    }
+}
