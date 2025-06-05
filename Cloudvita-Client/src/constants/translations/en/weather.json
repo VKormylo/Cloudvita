@@ -1,0 +1,22 @@
+{
+  "forecast": {
+    "feelsLike": "Feels like",
+    "humidity": "Humidity"
+  },
+  "overview": {
+    "title": "Today overview",
+    "windSpeed": "Wind Speed",
+    "pressure": "Pressure",
+    "rainChance": "Rain Chance",
+    "uvIndex": "UV Index"
+  },
+  "precip": {
+    "rain": "Rain",
+    "snow": "Snow",
+    "cloudiness": "Cloudiness"
+  },
+  "emptyWeather": {
+    "title": "No weather data yet.",
+    "subtitle": "Start searching for a location!"
+  }
+}

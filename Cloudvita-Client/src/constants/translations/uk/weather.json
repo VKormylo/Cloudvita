@@ -1,0 +1,22 @@
+{
+  "forecast": {
+    "feelsLike": "Відчув. як",
+    "humidity": "Вологість"
+  },
+  "overview": {
+    "title": "Сьогоднішній огляд",
+    "windSpeed": "Швидкість вітру",
+    "pressure": "Тиск",
+    "rainChance": "Ймовірність дощу",
+    "uvIndex": "Індекс УФ-випромінювання"
+  },
+  "precip": {
+    "rain": "Дощ",
+    "snow": "Сніг",
+    "cloudiness": "Хмарність"
+  },
+  "emptyWeather": {
+    "title": "Ще немає даних про погоду.",
+    "subtitle": "Почніть шукати локацію!"
+  }
+}

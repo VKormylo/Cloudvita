@@ -1,0 +1,55 @@
+{
+  "userInterface": {
+    "title": "User interface",
+    "theme": {
+      "title": "Theme",
+      "subtitle": "Choose your preferred theme",
+      "label": "Theme"
+    },
+    "language": {
+      "title": "Language",
+      "subtitle": "Choose your preferred language",
+      "label": "Language"
+    }
+  },
+  "generalSettings": {
+    "title": "General settings",
+    "timeFormat": {
+      "title": "Time format",
+      "subtitle": "Choose your preferred time format",
+      "label": "Time format"
+    }
+  },
+  "units": {
+    "title": "Choose units for weather data",
+    "temperature": {
+      "title": "Temperature unit",
+      "subtitle": "Change between Celsius or Fahrenheit temperature unit",
+      "label": "Temperature unit"
+    },
+    "speed": {
+      "title": "Speed unit",
+      "subtitle": "Change between km/h or mi/h speed unit",
+      "label": "Speed unit"
+    },
+    "pressure": {
+      "title": "Pressure unit",
+      "subtitle": "Change between mb or in pressure unit",
+      "label": "Pressure unit"
+    }
+  },
+  "options": {
+    "light": "Light",
+    "dark": "Dark",
+    "en": "English",
+    "uk": "Ukrainian",
+    "hour12": "12 hour",
+    "hour24": "24 hour",
+    "celsius": "Celsius",
+    "fahrenheit": "Fahrenheit",
+    "kph": "km/h",
+    "mph": "mi/h",
+    "mb": "mb",
+    "in": "in"
+  }
+}

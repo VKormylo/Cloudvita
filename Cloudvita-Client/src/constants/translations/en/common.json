@@ -1,0 +1,14 @@
+{
+  "date": {
+    "today": "Today",
+    "tomorrow": "Tomorrow"
+  },
+  "alerts": {
+    "savedSuccessfully": "Location saved successfully.",
+    "deletedSuccessfully": "Location deleted successfully.",
+    "updatedSuccessfully": "Location updated successfully."
+  },
+  "errors": {
+    "1006": "No matching location found."
+  }
+}

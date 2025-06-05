@@ -1,0 +1,14 @@
+{
+  "date": {
+    "today": "Сьогодні",
+    "tomorrow": "Завтра"
+  },
+  "alerts": {
+    "savedSuccessfully": "Локація успішно збережена.",
+    "deletedSuccessfully": "Локація успішно видалена.",
+    "updatedSuccessfully": "Локація успішно оновлена."
+  },
+  "errors": {
+    "1006": "Задану локацію не знайдено."
+  }
+}
