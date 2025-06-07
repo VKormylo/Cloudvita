@@ -12,6 +12,7 @@ import userRouter from './routes/userRoutes'
 import { incorrectUrl } from './middlewares/commonMiddleware'
 import { handleErrorResponse } from './controllers/errorController'
 import { ROOT } from './constants/constants'
+import config from './configs/config'
 
 const app = express()
 
@@ -20,7 +21,7 @@ app.use(helmet())
 
 app.use(
   cors({
-    origin: 'http://localhost:5174',
+    origin: config.CLIENT_URL,
     credentials: true
   })
 )
