@@ -1,13 +1,7 @@
 import { MouseEvent, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Trans, useTranslation } from 'react-i18next'
-import { transformText } from '~/utils/transformText'
-import {
-  AuthActionEnum,
-  SizeEnum,
-  TextStyleEnum,
-  VariantEnum
-} from '~/types/common.enums'
+import { AuthActionEnum, SizeEnum, VariantEnum } from '~/types/common.enums'
 import Logo from '~/components/logo/Logo'
 import Button from '~/components/button/Button'
 import AuthSignup from '~/components/auth-signup/AuthSignup'
