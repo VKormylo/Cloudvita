@@ -23,7 +23,7 @@ const createSendToken = (
   const token = signToken(user._id as string)
   const expiresIn = config.JWT_COOKIE_EXPIRES_IN || DEFAULT_EXPIRES_IN
 
-  const cookieOptions = rememberMe
+  const cookieOptions: any = rememberMe
     ? {
         expires: new Date(Date.now() + +expiresIn * 24 * 60 * 60 * 1000),
         secure: false,
@@ -34,7 +34,10 @@ const createSendToken = (
         httpOnly: true
       }
 
-  if (config.NODE_ENV === 'production') cookieOptions.secure = true
+  if (config.NODE_ENV === 'production') {
+    cookieOptions.secure = true
+    cookieOptions.sameSite = 'none'
+  }
 
   res.cookie('jwt', token, cookieOptions)
 
