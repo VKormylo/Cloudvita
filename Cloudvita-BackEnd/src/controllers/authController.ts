@@ -27,13 +27,11 @@ const createSendToken = (
     ? {
         expires: new Date(Date.now() + +expiresIn * 24 * 60 * 60 * 1000),
         secure: false,
-        httpOnly: true,
-        path: '/'
+        httpOnly: true
       }
     : {
         secure: false,
-        httpOnly: true,
-        path: '/'
+        httpOnly: true
       }
 
   if (config.NODE_ENV === 'production') {
@@ -134,18 +132,11 @@ export const protect = catchAsync(
 )
 
 export const logout = (req: Request, res: Response) => {
-  const cookieOptions: any = {
+  res.clearCookie('jwt', {
     httpOnly: true,
-    secure: false,
-    path: '/'
-  }
-
-  if (config.NODE_ENV === 'production') {
-    cookieOptions.secure = true
-    cookieOptions.sameSite = 'none'
-  }
-
-  res.clearCookie('jwt', cookieOptions)
+    secure: config.NODE_ENV === 'production',
+    sameSite: config.NODE_ENV === 'production' ? 'none' : 'lax'
+  })
 
   res.status(200).json({ status: 'success' })
 }
