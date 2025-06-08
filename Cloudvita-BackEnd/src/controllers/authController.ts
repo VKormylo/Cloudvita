@@ -27,11 +27,13 @@ const createSendToken = (
     ? {
         expires: new Date(Date.now() + +expiresIn * 24 * 60 * 60 * 1000),
         secure: false,
-        httpOnly: true
+        httpOnly: true,
+        path: '/'
       }
     : {
         secure: false,
-        httpOnly: true
+        httpOnly: true,
+        path: '/'
       }
 
   if (config.NODE_ENV === 'production') {
