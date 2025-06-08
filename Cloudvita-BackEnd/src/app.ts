@@ -24,7 +24,10 @@ app.set('trust proxy', 1)
 app.use(
   cors({
     origin: config.CLIENT_URL,
-    credentials: true
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
+    exposedHeaders: ['Set-Cookie']
   })
 )
 
