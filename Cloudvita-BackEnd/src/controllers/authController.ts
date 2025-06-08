@@ -132,16 +132,18 @@ export const protect = catchAsync(
 )
 
 export const logout = (req: Request, res: Response) => {
-  res.cookie('jwt', 'loggedout', {
-    expires: new Date(Date.now() + 10 * 1000),
+  const cookieOptions: any = {
     httpOnly: true,
-    secure: config.NODE_ENV === 'production',
-    sameSite: config.NODE_ENV === 'production' ? 'none' : 'lax',
-    domain:
-      config.NODE_ENV === 'production'
-        ? 'cloudvita-client.vercel.app'
-        : undefined
-  })
+    secure: false,
+    path: '/'
+  }
+
+  if (config.NODE_ENV === 'production') {
+    cookieOptions.secure = true
+    cookieOptions.sameSite = 'none'
+  }
+
+  res.clearCookie('jwt', cookieOptions)
 
   res.status(200).json({ status: 'success' })
 }
