@@ -19,6 +19,8 @@ const app = express()
 // Set security HTTP headers
 app.use(helmet())
 
+app.set('trust proxy', 1)
+
 app.use(
   cors({
     origin: config.CLIENT_URL,
@@ -33,8 +35,6 @@ app.use(cookieParser())
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
 }
-
-app.set('trust proxy', 1)
 
 // Limit requests from the same IP
 const limiter = rateLimit({
