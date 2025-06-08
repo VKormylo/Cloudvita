@@ -134,7 +134,9 @@ export const protect = catchAsync(
 export const logout = (req: Request, res: Response) => {
   res.cookie('jwt', 'loggedout', {
     expires: new Date(Date.now() + 10 * 1000),
-    httpOnly: true
+    httpOnly: true,
+    secure: config.NODE_ENV === 'production',
+    sameSite: config.NODE_ENV === 'production' ? 'none' : 'lax'
   })
   res.status(200).json({ status: 'success' })
 }
